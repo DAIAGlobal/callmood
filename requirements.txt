@@ -1,0 +1,14 @@
+openai-whisper
+pyyaml
+pandas
+python-docx
+pydub
+torch
+transformers
+psutil
+librosa
+PySide6
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib

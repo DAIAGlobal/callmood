@@ -1,0 +1,391 @@
+# DAIA Call Audit - Configuración Completa
+# Arquitectura: 100% Local | Costos: 0 USD | Control Total
+
+---
+general:
+  language: es
+  organization: "DAIA Data & Analytics"
+  version: "2.0.0"
+
+# ============================================================================
+# TRANSCRIPCIÓN - Whisper Local con Auto-Fallback
+# ============================================================================
+transcription:
+  engine: "whisper"  # Local only, no external APIs
+  audio_extensions:
+    - .wav
+    - .mp3
+    - .m4a
+    - .ogg
+    - .flac
+  
+  # Auto-fallback según recursos disponibles
+  auto_fallback: true
+  
+  # Modelos disponibles (en orden de preferencia)
+  models:
+    - large      # GPU: ~10GB VRAM (ideal)
+    - medium     # GPU: ~5GB VRAM | CPU: ~30min por hora
+    - small      # GPU: ~2GB VRAM | CPU: ~10min por hora (fallback default)
+  
+  # Configuración Whisper
+  whisper_config:
+    verbose: false
+    fp16: true        # Usar FP16 si hay GPU disponible
+    task: transcribe
+    best_of: 1
+    beam_size: 5
+    patience: 1.0
+
+# ============================================================================
+# ANÁLISIS DE SENTIMIENTO - Local (HuggingFace)
+# ============================================================================
+sentiment:
+  enabled: true
+  engine: "transformers"  # Modelos locales de HuggingFace
+  model: "nlptown/bert-base-multilingual-uncased-sentiment"  # Multiidioma
+  
+  # Umbral de confianza
+  confidence_threshold: 0.7
+  
+  # Mapeo de etiquetas (según el modelo)
+  label_map:
+    "5 stars": "very_positive"
+    "4 stars": "positive"
+    "3 stars": "neutral"
+    "2 stars": "negative"
+    "1 star": "very_negative"
+
+# ============================================================================
+# QA Y DETECCIÓN DE PATRONES - Reglas Declarativas (SIN IA)
+# ============================================================================
+qa:
+  enabled: true
+  engine: "rules"  # Rule-based, no APIs
+  
+  # Reglas por nivel de servicio
+  rules:
+    
+    # BASIC: Mínimo requerido
+    basic:
+      mandatory_phrases:
+        - "buenos días"
+        - "¿cómo puedo ayudarle"
+        - "gracias por llamar"
+      
+      forbidden_phrases:
+        - "no sé"
+        - "no puedo"
+      
+      min_duration_seconds: 30
+      max_silence_ratio: 0.3
+      
+      scoring_weight: 0.4
+    
+    # STANDARD: Requisitos normales
+    standard:
+      mandatory_phrases:
+        - "buenos días"
+        - "¿cómo puedo ayudarle"
+        - "nombre del cliente"
+        - "número de cliente"
+        - "gracias por llamar"
+      
+      forbidden_phrases:
+        - "disculpe, no sé"
+        - "no puedo ayudarle"
+        - "eso no es posible"
+      
+      required_elements:
+        - "problema identificado"
+        - "solución ofrecida"
+        - "despedida cortés"
+      
+      min_duration_seconds: 180  # 3 minutos
+      max_silence_ratio: 0.4
+      operator_speech_ratio: 0.45  # Operador: 45%, Cliente: 55%
+      
+      scoring_weight: 0.6
+    
+    # ADVANCED: Alta calidad
+    advanced:
+      mandatory_phrases:
+        - "bienvenido"
+        - "identificación completa"
+        - "resumen del problema"
+        - "solución acordada"
+        - "tiempo de resolución"
+        - "encuesta de satisfacción"
+      
+      forbidden_phrases:
+        - "no"
+        - "problema"
+        - "urgente"
+      
+      required_elements:
+        - "empatía demostrada"
+        - "solución probada"
+        - "confirmación del cliente"
+        - "seguimiento ofrecido"
+      
+      min_duration_seconds: 300  # 5 minutos
+      max_silence_ratio: 0.2
+      operator_speech_ratio: 0.40
+      
+      # Palabras de calidad
+      quality_keywords:
+        - "entiendo"
+        - "perfecto"
+        - "resuelto"
+        - "satisfecho"
+      
+      scoring_weight: 0.8
+
+# ============================================================================
+# ANÁLISIS DE RIESGO - Keywords y Heurísticas Locales
+# ============================================================================
+risk_analysis:
+  enabled: true
+  
+  keywords:
+    critical:  # Alto riesgo inmediato
+      list:
+        - "queja formal"
+        - "reclamación"
+        - "escalación"
+        - "abogado"
+        - "demanda"
+        - "cancelación"
+      weight: 3
+    
+    warning:  # Riesgo medio
+      list:
+        - "queja"
+        - "problema"
+        - "insatisfecho"
+        - "error"
+        - "fallo"
+        - "tardanza"
+      weight: 1
+  
+  # Umbrales de clasificación
+  thresholds:
+    critical: 10   # Riesgo crítico
+    high: 5        # Riesgo alto
+    medium: 2      # Riesgo medio
+    low: 0         # Bajo riesgo
+
+# ============================================================================
+# KPIs Y MÉTRICAS - Cálculo Local
+# ============================================================================
+kpis:
+  enabled: true
+  
+  metrics:
+    duration:
+      enabled: true
+      description: "Duración total en segundos"
+    
+    speaking_ratio:
+      enabled: true
+      description: "Ratio de tiempo hablado (operador vs cliente)"
+    
+    silence_ratio:
+      enabled: true
+      description: "Porcentaje de silencios"
+      threshold: 0.3
+    
+    response_time:
+      enabled: true
+      description: "Tiempo promedio de respuesta del operador"
+    
+    interruptions:
+      enabled: true
+      description: "Número de interrupciones detectadas"
+    
+    speech_rate:
+      enabled: true
+      description: "Velocidad promedio de habla (palabras/minuto)"
+    
+    vocabulary_richness:
+      enabled: true
+      description: "Riqueza léxica (palabras únicas / total)"
+    
+    checklist_score:
+      enabled: true
+      description: "Cumplimiento de checklist"
+    
+    sentiment_score:
+      enabled: true
+      description: "Puntuación de sentimiento"
+    
+    risk_level:
+      enabled: true
+      description: "Nivel de riesgo detectado"
+
+# ============================================================================
+# PERSISTENCIA - SQLite Local
+# ============================================================================
+database:
+  engine: "sqlite"  # 100% local, sin servidor
+  path: "data/daia_audit.db"
+  
+  tables:
+    - name: calls
+      description: "Registro de llamadas procesadas"
+    
+    - name: transcripts
+      description: "Transcripciones (metadata + full text)"
+    
+    - name: quality_scores
+      description: "Scores de calidad por checklist"
+    
+    - name: risk_assessments
+      description: "Análisis de riesgo"
+    
+    - name: kpi_results
+      description: "Resultados de KPIs calculados"
+    
+    - name: sentiment_analysis
+      description: "Análisis de sentimiento por segmento"
+    
+    - name: audit_logs
+      description: "Log de procesamiento y errores"
+
+# ============================================================================
+# PIPELINE - Ejecución Modular
+# ============================================================================
+pipeline:
+  # Niveles de servicio (cada uno incluye los anteriores)
+  levels:
+    basic:
+      description: "Auditoría básica: transcripción + riesgo"
+      steps:
+        - transcription
+        - risk_analysis
+        - report_generation
+      enabled: true
+    
+    standard:
+      description: "Auditoría estándar: + sentimiento + QA"
+      steps:
+        - transcription
+        - sentiment_analysis
+        - qa_evaluation
+        - risk_analysis
+        - kpi_calculation
+        - report_generation
+      enabled: true
+    
+    advanced:
+      description: "Auditoría avanzada: análisis completo + patrones"
+      steps:
+        - transcription
+        - sentiment_analysis
+        - qa_evaluation
+        - risk_analysis
+        - kpi_calculation
+        - pattern_detection
+        - anomaly_detection
+        - report_generation
+      enabled: true
+  
+  # Configuración global del pipeline
+  execution:
+    parallel_processing: true
+    max_workers: 4
+    timeout_per_file: 3600  # segundos
+    retry_on_failure: true
+    max_retries: 3
+    
+    # Logging
+    log_level: "INFO"
+    log_file: "logs/pipeline.log"
+
+# ============================================================================
+# SALIDA - Reportes y Persistencia
+# ============================================================================
+output:
+  formats:
+    - csv        # Datos tabulares
+    - json       # Datos estructurados
+    - docx       # Reporte Word
+    - pdf        # PDF (si LibreOffice disponible)
+    - html       # Reporte web (future)
+  
+  reports:
+    summary:
+      enabled: true
+      includes:
+        - executive_summary
+        - kpi_dashboard
+        - risk_distribution
+    
+    detailed:
+      enabled: true
+      includes:
+        - call_by_call_analysis
+        - sentiment_timeline
+        - qa_compliance_matrix
+    
+    operational:
+      enabled: true
+      includes:
+        - processing_metrics
+        - performance_logs
+        - data_quality_report
+
+# ============================================================================
+# PATHS - Estructura de Directorios
+# ============================================================================
+paths:
+  audio_in: "audio_in"
+  transcripts_raw: "transcripts/raw"
+  transcripts_clean: "transcripts/clean"
+  analysis: "analysis"
+  analysis_scoring: "analysis/scoring"
+  analysis_risk: "analysis/risk"
+  analysis_sentiment: "analysis/sentiment"
+  analysis_kpi: "analysis/kpi"
+  reports: "reports"
+  logs: "logs"
+  data: "data"
+  cache: "cache"
+
+# ============================================================================
+# DRIVE - Integración opcional
+# ============================================================================
+drive:
+  clients_root_id: ""  # ID de la carpeta clientes/ en Drive (o env DRIVE_CLIENTS_ROOT_ID)
+  service_account_file: "service_account.json"  # Ruta local al JSON de Service Account (o env DRIVE_SERVICE_ACCOUNT_FILE)
+
+# ============================================================================
+# CONTRATOS / NIVELES DE SERVICIO
+# ============================================================================
+contracts:
+  # Ejemplo de contrato basic
+  example_basic:
+    level: "basic"
+    description: "Call Center Básico"
+    sla:
+      processing_time_hours: 24
+      availability_percent: 95
+    monthly_calls: 1000
+  
+  # Ejemplo de contrato standard
+  example_standard:
+    level: "standard"
+    description: "Call Center Profesional"
+    sla:
+      processing_time_hours: 8
+      availability_percent: 99
+    monthly_calls: 5000
+  
+  # Ejemplo de contrato advanced
+  example_advanced:
+    level: "advanced"
+    description: "Call Center Enterprise"
+    sla:
+      processing_time_hours: 1
+      availability_percent: 99.9
+    monthly_calls: 50000

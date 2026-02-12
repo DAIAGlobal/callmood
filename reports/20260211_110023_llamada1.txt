@@ -1,0 +1,77 @@
+================================================================================
+DAIA 2.0 - REPORTE DE ANÁLISIS DE LLAMADA
+================================================================================
+
+--------------------------------------------------------------------------------
+📋 INFORMACIÓN GENERAL
+--------------------------------------------------------------------------------
+Archivo: C:\dev\daia_call_audit\audio_in\llamada1.m4a
+Duración: 163.968 segundos (2min 43s)
+Nivel de análisis: ADVANCED
+Procesado: 20260211_110023
+Estado: COMPLETED
+
+--------------------------------------------------------------------------------
+🎯 RESUMEN EJECUTIVO
+--------------------------------------------------------------------------------
+
+📊 Calidad General: DEFICIENTE
+   • Cumplimiento QA: 30.9%
+   • Evaluación: ❌ NO CUMPLE
+
+😊 Análisis Emocional: N/A
+   • Confianza: 30.2%
+   • Valoración: ⚪ Neutral
+
+⚠️ Nivel de Riesgo: MEDIO
+   • Palabras críticas: abogado
+   • Estado: 🟢 BAJO - Normal
+
+--------------------------------------------------------------------------------
+📝 TRANSCRIPCIÓN
+--------------------------------------------------------------------------------
+[SPEAKER_1] Hola. Hola, ¿sí qué tal? Sí. Buenos días, ¿quisiera comunicarme con Nicolás Bustó? Sí, de parte. De Ferrer Abogados. Sí. ¿Hablo con él? Sí. Bien, señor, estoy llamándolo desde el estudio por el asunto del saldo de Buda con la financiera cash que te estuvieron trabajo y no tengo forma de pagarlo. Y estoy al tanto de las deudas. En el momento que yo tenga la plata para poder empezar a pagar las deudas, me voy a acercar de las deudas. Por el momento, va a quedar allí que se genere el interés. De contacto con Nicolás en realidad, bien. Yo te contacto en realidad porque yo veo que si bien vos comunicaste esto mismo que me decís, de cada momento, no estás con un trabajo fijo, pero también veo que ni siquiera te llegaron a informar sobre montones de audubus opciones de pago. Porque todavía vos lo que tenés es un saldo, son 19 mil pesos lo que te va quedando. Sí, es un saldo para cuando tenés trabajo. ¿Y esos 19 mil pesos? Para cuando estabas ganando 70, 70 mil pesos. Claro, yo te ...
+
+--------------------------------------------------------------------------------
+✅ EVALUACIÓN DE CALIDAD (QA)
+--------------------------------------------------------------------------------
+Puntuación: 30.9%
+Clasificación: DEFICIENTE
+Nivel evaluado: advanced
+
+Detalles por categoría:
+  ❌ N/A
+  ❌ N/A
+  ❌ N/A
+  ❌ N/A
+  ❌ N/A
+  ❌ N/A
+
+--------------------------------------------------------------------------------
+📊 MÉTRICAS OPERACIONALES (KPIs)
+--------------------------------------------------------------------------------
+
+• Duration: 163.968seconds
+• Word Count: 519palabras
+• Silence Ratio: 0.0ratio (0-1)
+• Speech Rate: 150.0palabras/minuto (NORMAL)
+• Vocabulary Richness: 0.47784200385356457Type-Token Ratio (0-1)
+• Response Time: 207.6seconds (LENTO)
+• Speaking Balance: N/Aporcentaje
+• Interruptions: N/Anúmero (NORMAL)
+
+--------------------------------------------------------------------------------
+⚠️ ANOMALÍAS DETECTADAS
+--------------------------------------------------------------------------------
+  ⚠️ low_qa_score: N/A
+
+--------------------------------------------------------------------------------
+💡 RECOMENDACIONES
+--------------------------------------------------------------------------------
+  🔴 CRÍTICO: Llamada no cumple estándares mínimos de calidad
+     - Revisar protocolo de atención
+     - Capacitación urgente requerida
+
+================================================================================
+Fin del Reporte
+================================================================================

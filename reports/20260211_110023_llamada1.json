@@ -1,0 +1,371 @@
+{
+  "timestamp": "20260211_110023",
+  "filename": "C:\\dev\\daia_call_audit\\audio_in\\llamada1.m4a",
+  "duration": 163.968,
+  "service_level": "advanced",
+  "status": "completed",
+  "transcript": "[SPEAKER_1] Hola. Hola, ¿sí qué tal? Sí. Buenos días, ¿quisiera comunicarme con Nicolás Bustó? Sí, de parte. De Ferrer Abogados. Sí. ¿Hablo con él? Sí. Bien, señor, estoy llamándolo desde el estudio por el asunto del saldo de Buda con la financiera cash que te estuvieron trabajo y no tengo forma de pagarlo. Y estoy al tanto de las deudas. En el momento que yo tenga la plata para poder empezar a pagar las deudas, me voy a acercar de las deudas. Por el momento, va a quedar allí que se genere el in...",
+  "qa": {
+    "level": "advanced",
+    "transcript_length": 2780,
+    "checks": {
+      "mandatory_phrases": {
+        "name": "Frases Obligatorias",
+        "type": "mandatory",
+        "total": 6,
+        "found": 0,
+        "missing": 6,
+        "compliance": 0.0,
+        "status": "FALLO",
+        "details": {
+          "found": [],
+          "missing": [
+            "bienvenido",
+            "identificación completa",
+            "resumen del problema",
+            "solución acordada",
+            "tiempo de resolución",
+            "encuesta de satisfacción"
+          ]
+        },
+        "weight": 0.4
+      },
+      "forbidden_phrases": {
+        "name": "Frases Prohibidas",
+        "type": "forbidden",
+        "total": 3,
+        "violations": 1,
+        "compliance": 0,
+        "status": "FALLO",
+        "details": {
+          "violations": [
+            [
+              "no",
+              18
+            ]
+          ]
+        },
+        "weight": 0.3
+      },
+      "duration": {
+        "name": "Duración Mínima",
+        "type": "duration",
+        "minimum_seconds": 300,
+        "estimated_duration": 207.6,
+        "compliance": 0.692,
+        "status": "CORTO",
+        "details": {
+          "required": "300s",
+          "estimated": "208s"
+        },
+        "weight": 0.2
+      },
+      "silence": {
+        "name": "Ratio de Silencios",
+        "type": "silence",
+        "maximum_ratio": 0.2,
+        "actual_ratio": 0.0,
+        "compliance": 1.0,
+        "status": "OK",
+        "details": {
+          "max": "20%",
+          "actual": "0.0%"
+        },
+        "weight": 0.15
+      },
+      "required_elements": {
+        "name": "Elementos Requeridos",
+        "type": "elements",
+        "total": 4,
+        "found": 2,
+        "compliance": 0.5,
+        "status": "INCOMPLETO",
+        "details": {
+          "found": [
+            "empatía demostrada",
+            "seguimiento ofrecido"
+          ],
+          "missing": [
+            "solución probada",
+            "confirmación del cliente"
+          ]
+        },
+        "weight": 0.25
+      },
+      "quality": {
+        "name": "Palabras de Calidad",
+        "type": "quality",
+        "target_keywords": 4,
+        "found_keywords": 1,
+        "total_occurrences": 1,
+        "compliance": 0.25,
+        "status": "OK",
+        "details": {
+          "keywords_found": [
+            [
+              "entiendo",
+              1
+            ]
+          ]
+        },
+        "weight": 0.2
+      }
+    },
+    "score": 0.30893333333333334,
+    "max_score": 1.0,
+    "compliance_percentage": 30.893333333333334,
+    "details": [
+      {
+        "name": "Frases Obligatorias",
+        "type": "mandatory",
+        "total": 6,
+        "found": 0,
+        "missing": 6,
+        "compliance": 0.0,
+        "status": "FALLO",
+        "details": {
+          "found": [],
+          "missing": [
+            "bienvenido",
+            "identificación completa",
+            "resumen del problema",
+            "solución acordada",
+            "tiempo de resolución",
+            "encuesta de satisfacción"
+          ]
+        },
+        "weight": 0.4
+      },
+      {
+        "name": "Frases Prohibidas",
+        "type": "forbidden",
+        "total": 3,
+        "violations": 1,
+        "compliance": 0,
+        "status": "FALLO",
+        "details": {
+          "violations": [
+            [
+              "no",
+              18
+            ]
+          ]
+        },
+        "weight": 0.3
+      },
+      {
+        "name": "Duración Mínima",
+        "type": "duration",
+        "minimum_seconds": 300,
+        "estimated_duration": 207.6,
+        "compliance": 0.692,
+        "status": "CORTO",
+        "details": {
+          "required": "300s",
+          "estimated": "208s"
+        },
+        "weight": 0.2
+      },
+      {
+        "name": "Ratio de Silencios",
+        "type": "silence",
+        "maximum_ratio": 0.2,
+        "actual_ratio": 0.0,
+        "compliance": 1.0,
+        "status": "OK",
+        "details": {
+          "max": "20%",
+          "actual": "0.0%"
+        },
+        "weight": 0.15
+      },
+      {
+        "name": "Elementos Requeridos",
+        "type": "elements",
+        "total": 4,
+        "found": 2,
+        "compliance": 0.5,
+        "status": "INCOMPLETO",
+        "details": {
+          "found": [
+            "empatía demostrada",
+            "seguimiento ofrecido"
+          ],
+          "missing": [
+            "solución probada",
+            "confirmación del cliente"
+          ]
+        },
+        "weight": 0.25
+      },
+      {
+        "name": "Palabras de Calidad",
+        "type": "quality",
+        "target_keywords": 4,
+        "found_keywords": 1,
+        "total_occurrences": 1,
+        "compliance": 0.25,
+        "status": "OK",
+        "details": {
+          "keywords_found": [
+            [
+              "entiendo",
+              1
+            ]
+          ]
+        },
+        "weight": 0.2
+      }
+    ],
+    "classification": "DEFICIENTE"
+  },
+  "sentiment": {
+    "operator": null,
+    "client": null,
+    "overall": {
+      "overall": "very_negative",
+      "score": 0.0,
+      "confidence": 0.3019685745239258,
+      "segments": [
+        {
+          "text": "[SPEAKER_1] Hola. Hola, ¿sí qué tal? Sí. Buenos días, ¿quisiera comunicarme con Nicolás Bustó? Sí, de parte. De Ferrer Abogados. Sí. ¿Hablo con él? Sí. Bien, señor, estoy llamándolo desde el estudio por el asunto del saldo de Buda con la financiera cash que te estuvieron trabajo y no tengo forma de pagarlo. Y estoy al tanto de las deudas. En el momento que yo tenga la plata para poder empezar a pagar las deudas, me voy a acercar de las deudas. Por el momento, va a quedar allí que se genere el interés.",
+          "label": "negative",
+          "confidence": 0.30928927659988403
+        },
+        {
+          "text": "De contacto con Nicolás en realidad, bien. Yo te contacto en realidad porque yo veo que si bien vos comunicaste esto mismo que me decís, de cada momento, no estás con un trabajo fijo, pero también veo que ni siquiera te llegaron a informar sobre montones de audubus opciones de pago. Porque todavía vos lo que tenés es un saldo, son 19 mil pesos lo que te va quedando. Sí, es un saldo para cuando tenés trabajo. ¿Y esos 19 mil pesos? Para cuando estabas ganando 70, 70 mil pesos. Claro, yo te entiendo.",
+          "label": "negative",
+          "confidence": 0.37302884459495544
+        },
+        {
+          "text": "Sí, es un saldo 19 mil pesos. No, pero, escuchame, Nicolás, me refiero a que esos 19 mil pesos vos, por ejemplo, los puedes financiar en cotas de 1. 400, 1. 500. Y claro, no, pero ahora no puedo hacer ningún gasto. No tenés ese margen ahora. No, no, no tengo margen. No tengo ningún margen. Está. Por eso también. Está, eso era gracias a consultártelo porque capaz que tú pensabas esto es sin trabajo y no voy a poder pagarlo ahora.",
+          "label": "very_negative",
+          "confidence": 0.47616276144981384
+        },
+        {
+          "text": "En el momento que yo tenga trabajo, pues yo me voy a acercarlo de las deudas y está, está enterando de que estoy pagando. No importa. Te surja un trabajo esforádico. Sí, sí, me importa. Igual que. que genere interés. Algo en algo único. No importa que genere interés, ni nada. Pero lo digo por ti, Nicolás, porque al fin y al cabo, la idea es ahorrarte los intereses y que no tengas que estar pagando de las cosas. No lo digo por mí, lo digo por vos. Yo sé lo que vos me estás diciendo. Ok, bien.",
+          "label": "neutral",
+          "confidence": 0.42126622796058655
+        },
+        {
+          "text": "Los intereses que esté generen van a hacer para mí y los voy a pagar igual. hay varias opciones y siempre se buscará una forma que te quiera accesible para que tú lo puedas solucionar. Simplemente, comunícate en cuanto tengas esa opción. Sí, claro. En el momento en que yo. Voy a su tuña a charlar al cuiriculo de paus. ¿Verdad? Bueno, abordamos entonces. Hasta luego. [SPEAKER_2] comentando el mes pasado. Sí, mira, yo como comenté el mes pasado, yo estoy ahora sin que era una pota de 3 mil y no.",
+          "label": "negative",
+          "confidence": 0.259600967168808
+        },
+        {
+          "text": "Claro, pero por eso estaba reiterando de que yo. Bueno, dejamos asentado. Ten en cuenta que no está congelada. Está dentro de tu encuentro, tú tengas posibilidad de si estás ahí. Yo sé lo que vos me estás diciendo. Ahora no tengo que pagar. Claro, por eso te digo. O sea, en cuanto tengas posibilidad de este comunicás, Pero, es que.",
+          "label": "neutral",
+          "confidence": 0.37907806038856506
+        }
+      ],
+      "raw_label": "1 star"
+    }
+  },
+  "risk": {
+    "level": "MEDIO",
+    "score": 9.16,
+    "critical_found": [
+      "abogado"
+    ],
+    "warnings_found": [],
+    "rules_engine": {
+      "enabled": true,
+      "ruleset_id": "default",
+      "ruleset_name": "Base compliance",
+      "version": 1,
+      "score": 6.16,
+      "level": "MEDIO",
+      "keywords_hit": [],
+      "missing_required": [
+        "gracias por llamar",
+        "puedo ayudarte"
+      ],
+      "similarity": 0.032,
+      "created_by": "system",
+      "created_at": "2026-01-21T20:59:43.214042"
+    }
+  },
+  "kpis": {
+    "timestamp": null,
+    "transcript_metadata": {
+      "lines": 2,
+      "characters": 2780,
+      "paragraphs": 1
+    },
+    "metrics": {
+      "duration": {
+        "type": "duration",
+        "value": 163.968,
+        "unit": "seconds",
+        "estimated": false,
+        "formatted": "00:02:43"
+      },
+      "word_count": {
+        "type": "word_count",
+        "value": 519,
+        "unit": "palabras",
+        "average_word_length": 4.358381502890174
+      },
+      "silence_ratio": {
+        "type": "silence_ratio",
+        "value": 0.0,
+        "unit": "ratio (0-1)",
+        "percentage": 0.0,
+        "status": "NORMAL",
+        "metadata": {
+          "empty_lines": 0,
+          "content_lines": 2,
+          "total_lines": 2
+        }
+      },
+      "speech_rate": {
+        "type": "speech_rate",
+        "value": 150.0,
+        "unit": "palabras/minuto",
+        "classification": "NORMAL",
+        "estimated_duration_minutes": 3.46
+      },
+      "vocabulary_richness": {
+        "type": "vocabulary_richness",
+        "value": 0.47784200385356457,
+        "unit": "Type-Token Ratio (0-1)",
+        "richness_level": "MEDIO",
+        "unique_words": 248,
+        "total_words": 519
+      },
+      "response_time": {
+        "type": "response_time",
+        "value": 207.6,
+        "unit": "seconds",
+        "estimated": true,
+        "exchanges": 1,
+        "classification": "LENTO"
+      },
+      "speaking_balance": {
+        "type": "speaking_balance",
+        "operator_percentage": 0.0,
+        "client_percentage": 0.0,
+        "operator_words": 0,
+        "client_words": 0,
+        "balance_quality": "SIN_DATOS",
+        "unit": "porcentaje",
+        "note": "calculado_con_diarizacion"
+      },
+      "interruptions": {
+        "type": "interruptions",
+        "count": 0,
+        "percentage": 0.0,
+        "classification": "NORMAL",
+        "unit": "número"
+      }
+    }
+  },
+  "patterns": [],
+  "anomalies": [
+    {
+      "type": "low_qa_score",
+      "value": 30.893333333333334,
+      "threshold": 50
+    }
+  ]
+}

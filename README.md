@@ -1,6 +1,6 @@
 # 🎯 DAIA 2.0 - Sistema de Auditoría de Llamadas
 
-**Versión:** 2.0.0 Final | **Estado:** ✅ Producción | **Costo:** $0 USD
+**Versión:** 2.0.0 Final | **Estado:** ✅ Producción 
 
 Sistema empresarial de auditoría de llamadas 100% local, sin APIs externas, zero-cost.
 

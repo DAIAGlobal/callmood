@@ -12,8 +12,9 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 from dataclasses import dataclass
 
-# Agregar paths necesarios
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "scripts"))
+# Agregar paths necesarios (asegurar ruta al directorio `scripts` en la raíz del proyecto)
+project_root = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(project_root / "scripts"))
 
 from daia.domain.models import (
     AuditedCall,

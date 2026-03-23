@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: callmood-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: postgresql://user:pass@host/dbname  # Configure in Render dashboard
+      - key: REDIS_URL
+        value: redis://localhost:6379  # Configure in Render dashboard  
+      - key: STORAGE_DIR
+        value: /tmp/storage
+      - key: ARTIFACTS_DIR
+        value: /tmp/artifacts
+
+databases:
+  - name: callmood-postgres
+    databaseName: callmood
+    user: callmood
+    ipAllowList: []  # Allow all

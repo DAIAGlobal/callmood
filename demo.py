@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-DAIA 2.0 - Quick Start Interactive Demo
+CallMood - Quick Start Interactive Demo
 Demostración interactiva del sistema completo
 """
 
@@ -14,21 +14,22 @@ if sys.platform == "win32":
     try:
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-    except:
+    except Exception:
         pass
 
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+PROJECT_ROOT = Path(__file__).parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - [%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
 
-from lib_resources import ResourceManager, ConfigManager
-from lib_transcription import create_transcriber
-from lib_sentiment import create_sentiment_analyzer
-from lib_qa import QARuleEngine
-from lib_kpis import KPICalculator
-from lib_database import DAIADatabase
+from daia.infrastructure.pipeline import ResourceManager, ConfigManager, DAIADatabase
+from daia.infrastructure.pipeline.lib_transcription import create_transcriber
+from daia.infrastructure.pipeline.lib_sentiment import create_sentiment_analyzer
+from daia.infrastructure.pipeline.lib_qa import QARuleEngine
+from daia.infrastructure.pipeline.lib_kpis import KPICalculator
 
 def print_header(text):
     """Print formatted header"""
@@ -50,7 +51,7 @@ def demo_config():
     """Demo 2: Configuration Loading"""
     print_header("DEMO 2: CARGA DE CONFIGURACIÓN")
     config = ConfigManager('config.yaml')
-    print(f"\n  Versión DAIA: {config.get('version')}")
+    print(f"\n  Versión CallMood: {config.get('version')}")
     print(f"  Idioma: {config.get('general.language')}")
     print(f"  Log level: {config.get('general.log_level')}")
     print(f"  Modelo sentimiento: {config.get('sentiment.model')}")
@@ -179,8 +180,8 @@ def demo_pipeline():
 
 def main():
     """Run interactive demo"""
-    print_header("DAIA 2.0 - SISTEMA DE AUDITORÍA DE LLAMADAS")
-    print("\n  Bienvenido a DAIA 2.0 - Sistema 100% Local")
+    print_header("CallMood - SISTEMA DE AUDITORÍA DE LLAMADAS")
+    print("\n  Bienvenido a CallMood - Sistema 100% Local")
     print("  Versión: 2.0.0 | Status: ✅ PRODUCCIÓN LISTA")
     
     demos = [

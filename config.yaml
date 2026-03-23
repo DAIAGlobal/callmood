@@ -1,10 +1,10 @@
-# DAIA Call Audit - Configuración Completa
+# CallMood Call Audit - Configuración Completa
 # Arquitectura: 100% Local | Costos: 0 USD | Control Total
 
 ---
 general:
   language: es
-  organization: "DAIA Data & Analytics"
+  organization: "CallMood"
   version: "2.0.0"
 
 # ============================================================================

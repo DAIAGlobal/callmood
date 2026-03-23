@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: callmood-api
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src/backend:/app/src/engine:/app
+    command:
+      - uvicorn
+      - app.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --reload
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    build: .
+    container_name: callmood-worker
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src/backend:/app/src/engine:/app
+    command: rq worker -u ${REDIS_URL} callmood
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15
+    container_name: callmood-postgres
+    environment:
+      POSTGRES_USER: callmood
+      POSTGRES_PASSWORD: callmood
+      POSTGRES_DB: callmood
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    container_name: callmood-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  storage:
+  artifacts:

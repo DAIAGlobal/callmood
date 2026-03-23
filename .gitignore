@@ -8,17 +8,39 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
 
-# Base de datos local
+# Herramientas/IDE
+.idea/
+.vscode/
+
+# Datos runtime (se recrean en ejecución)
 data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/*.db-journal
+data/cache/
+data/logs/
+!data/rulesets.json
+var/
+var/**
 
-# Audios
+# Entradas/salidas operativas
 audio_in/
-
-# Reportes generados
+audio_in/**
 reports/
+reports/**
 analysis/
+analysis/**
 transcripts/
+transcripts/**
+artifacts/
+artifacts/**
+storage/
+storage/**
+.env
 
 # Logs
 *.log
@@ -26,6 +48,3 @@ transcripts/
 # OS
 .DS_Store
 Thumbs.db
-
-# Pytest
-.pytest_cache/

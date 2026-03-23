@@ -28,7 +28,6 @@ RUN chmod +x /app
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
+# Render defines $PORT automatically (no fallback needed)
 EXPOSE 8000
-
-# Default port for Render
-CMD ["uvicorn", "src.backend.app.main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}"]
+CMD ["uvicorn", "src.backend.app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]

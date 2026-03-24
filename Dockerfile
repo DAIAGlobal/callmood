@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create storage directories
-RUN mkdir -p /app/storage /app/artifacts /tmp/storage /tmp/artifacts
+RUN mkdir -p /app/storage /app/artifacts /tmp/storage /tmp/artifacts /app/data
 
 # Set permissions
 RUN chmod +x /app

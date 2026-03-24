@@ -27,19 +27,14 @@ class Settings(BaseSettings):
         super().__init__(**data)
         # Set defaults from env if provided
         if not self.database_url:
-            self.database_url = os.getenv("DATABASE_URL", "postgresql+psycopg2://callmood:callmood@db:5432/callmood")
+            # Fallback to SQLite if DATABASE_URL not provided
+            self.database_url = os.getenv("DATABASE_URL", "sqlite:///./test.db")
         if not self.redis_url:
-            self.redis_url = os.getenv("REDIS_URL", "redis://redis:6379/0")
+            self.redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
         if not self.storage_dir or self.storage_dir == "None":
             self.storage_dir = os.getenv("STORAGE_DIR", "storage")
         if not self.artifacts_dir or self.artifacts_dir == "None":
             self.artifacts_dir = os.getenv("ARTIFACTS_DIR", "artifacts")
-
-
-@lru_cache
-def get_settings() -> Settings:
-    return Settings()
-
 
 
 @lru_cache

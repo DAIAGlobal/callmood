@@ -38,7 +38,7 @@ class DAIADatabase:
     usa SQLAlchemy para soportar SaaS multi-tenant.
     """
 
-    def __init__(self, db_path: str = "postgresql://callmood:callmood@db:5432/callmood", default_company_id: str | None = None):
+    def __init__(self, db_path: str = "sqlite:///./pipeline.db", default_company_id: str | None = None):
         """
         Args:
             db_path: URL de conexión (se ignora si existe DATABASE_URL en entorno)
@@ -50,6 +50,12 @@ class DAIADatabase:
         self.database_url = candidate
         self.default_company_id = default_company_id or os.getenv("DEFAULT_COMPANY_ID", "default")
 
+        # Configure engine based on database type
+        connect_args = {}
+        if self.database_url.startswith("sqlite"):
+            connect_args = {"check_same_thread": False}
+        
+        self.engine = create_engine(self.database_url, connect_args=connect_args, future=True, pool_pre_ping=True)
         self.metadata = MetaData()
 
         self.calls = Table(
@@ -147,7 +153,6 @@ class DAIADatabase:
             Column("timestamp", DateTime(timezone=True), server_default=func.now()),
         )
 
-        self.engine = create_engine(self.database_url, future=True, pool_pre_ping=True)
         self._create_tables()
         logger.info("✓ Database inicializada en %s", self.database_url)
 

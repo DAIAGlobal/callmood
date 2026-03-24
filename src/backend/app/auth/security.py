@@ -6,7 +6,9 @@ from passlib.context import CryptContext
 
 from ..config import get_settings
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# bcrypt has a password length limit of 72 bytes.
+# bcrypt_sha256 hashes long passwords safely before bcrypt to avoid truncation attacks.
+pwd_context = CryptContext(schemes=["bcrypt_sha256", "bcrypt"], deprecated="auto")
 settings = get_settings()
 
 
